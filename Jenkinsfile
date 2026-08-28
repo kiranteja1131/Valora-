@@ -21,4 +21,9 @@ stages {
         }
     }
 }
+post{
+    success{
+        echo 'pipeline successfully completed'
+        }
+    }
 }
