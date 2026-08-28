@@ -28,5 +28,8 @@ post{
     failure {
         echo 'something has interrupted..! '
     }
+    always{
+        echo 'pipeline execution finished..'
+    }
     }
 }
