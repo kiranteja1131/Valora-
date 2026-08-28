@@ -9,6 +9,11 @@ stages {
             bat 'docker compose build'
         }
     }
+    stage('Verify Images') { 
+        steps { echo 'Verifying Docker images...' 
+                bat 'docker images' 
+                } 
+            }
 }
 
 
