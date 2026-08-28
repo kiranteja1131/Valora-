@@ -25,5 +25,8 @@ post{
     success{
         echo 'pipeline successfully completed'
         }
+    failure {
+        echo 'something has interrupted..! '
+    }
     }
 }
