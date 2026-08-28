@@ -1,12 +1,15 @@
-pipeline{
-    agent any
+pipeline {
+agent any
 
-    stages {
-        stage('Build') {
-            step{ echo 'Building valora application...'
+
+stages {
+    stage('Build') {
+        steps {
+            echo 'Building Valora application...'
             bat 'docker compose build'
-            }
         }
     }
-    
+}
+
+
 }
