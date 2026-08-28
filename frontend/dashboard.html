@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankSphere | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+```
+<nav class="navbar">
+    <div class="logo">🏦 BankSphere</div>
+    <button class="login-btn" onclick="logout()">Logout</button>
+</nav>
+
+<main class="dashboard-container">
+
+    <section class="dashboard-header">
+        <div>
+            <p class="welcome-text">WELCOME BACK</p>
+            <h1 id="user-name">Account Holder</h1>
+            <p class="account-number">Account No: XXXX XXXX 4582</p>
+        </div>
+    </section>
+
+    <section class="account-summary">
+        <div class="balance-card">
+            <p>Available Balance</p>
+            <h2>₹ <span id="balance">0.00</span></h2>
+            <span class="account-type">Savings Account</span>
+        </div>
+
+        <div class="last-transaction-card">
+            <p>Last Transaction</p>
+            <h3 id="last-transaction">No recent transactions</h3>
+            <span id="last-transaction-date">--</span>
+        </div>
+    </section>
+
+    <section class="transactions-section">
+        <div class="section-title">
+            <h2>Recent Transactions</h2>
+            <span>Last 5 transactions</span>
+        </div>
+
+        <div class="transaction-list" id="transaction-list">
+            <p class="no-transactions">No transactions available</p>
+        </div>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+```
+
+</body>
+</html>
