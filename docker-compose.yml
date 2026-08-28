@@ -11,6 +11,9 @@ services:
 
   backend:
     build: ./backend
+    backend:
+  build: ./backend
+  image: kiran626/valora-backend:latest
     container_name: bb-container
     ports:
       - "5000:5000"
@@ -23,6 +26,9 @@ services:
 
   frontend:
     build: ./frontend
+    backend:
+  build: ./backend
+  image: kiran626/valora-frontend:latest
     container_name: bf-container
     ports:
       - "8081:80"

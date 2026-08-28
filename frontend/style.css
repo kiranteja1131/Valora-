@@ -6,14 +6,14 @@
 
 body {
 font-family: Arial, sans-serif;
-background-color: #f73104;
-color: #e700b5;
+background-color: #f4faff;
+color: #102a43;
 }
 
 /* Navigation */
 .navbar {
 background-color: #0b3d91;
-color: rgb(5, 246, 81);
+color: white;
 padding: 18px 8%;
 display: flex;
 justify-content: space-between;

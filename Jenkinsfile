@@ -14,6 +14,19 @@ stages {
                 bat 'docker images' 
                 } 
             }
+    stage('Push Images') {
+        steps {
+            withCredentials([usernamePassword(
+                credentialsId: 'dockerhub-creds',
+                usernameVariable: 'DOCKER_USERNAME',
+                passwordVariable: 'DOCKER_PASSWORD'
+            )]) {
+                bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
+                bat 'docker compose push'
+            }
+        }
+    }
+
     stage('Deploy') {
         steps {
             echo 'Deploying valora application...'
