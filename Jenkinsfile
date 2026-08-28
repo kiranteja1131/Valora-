@@ -14,7 +14,11 @@ stages {
                 bat 'docker images' 
                 } 
             }
+    stage('Deploy') {
+        steps {
+            echo 'Deploying valora application...'
+            bat 'docker compose up -d'
+        }
+    }
 }
-
-
 }
