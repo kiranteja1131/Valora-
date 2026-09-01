@@ -26,7 +26,6 @@ stages {
             }
         }
     }
-
     stage('Deploy') {
         steps {
             echo 'Deploying valora application...'
