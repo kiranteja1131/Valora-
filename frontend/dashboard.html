@@ -1,59 +1,235 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BankSphere | Dashboard</title>
+    <title>Valora | Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="dashboard-body">
 
-```
 <nav class="navbar">
-    <div class="logo">🏦 BankSphere</div>
-    <button class="login-btn" onclick="logout()">Logout</button>
+
+    <div class="logo">🏦 Valora</div>
+
+    <div class="nav-actions">
+
+        <button
+            class="admin-nav-btn"
+            onclick="goToAdminLogin()">
+            👨‍💼 Admin
+        </button>
+
+        <button
+            class="login-btn"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
 </nav>
+
 
 <main class="dashboard-container">
 
+    <!-- Welcome -->
+
     <section class="dashboard-header">
+
         <div>
             <p class="welcome-text">WELCOME BACK</p>
-            <h1 id="user-name">Account Holder</h1>
-            <p class="account-number">Account No: XXXX XXXX 4582</p>
+
+            <h1 id="user-name">
+                Account Holder
+            </h1>
+
+            <p class="account-number">
+                Account No:
+                <span id="account-number">
+                    Loading...
+                </span>
+            </p>
         </div>
+
+        <div class="account-status">
+            <span class="status-dot"></span>
+            Account Active
+        </div>
+
     </section>
+
+
+    <!-- Account Summary -->
 
     <section class="account-summary">
+
         <div class="balance-card">
-            <p>Available Balance</p>
-            <h2>₹ <span id="balance">0.00</span></h2>
-            <span class="account-type">Savings Account</span>
+
+            <div class="card-top">
+
+                <p>Available Balance</p>
+
+                <span class="card-icon-small">
+                    💳
+                </span>
+
+            </div>
+
+            <h2>
+                ₹ <span id="balance">0.00</span>
+            </h2>
+
+            <span class="account-type">
+                Savings Account
+            </span>
+
         </div>
+
 
         <div class="last-transaction-card">
-            <p>Last Transaction</p>
-            <h3 id="last-transaction">No recent transactions</h3>
-            <span id="last-transaction-date">--</span>
+
+            <div class="card-top">
+
+                <p>Last Transaction</p>
+
+                <span class="card-icon-small">
+                    📊
+                </span>
+
+            </div>
+
+            <h3 id="last-transaction">
+                No recent transactions
+            </h3>
+
+            <span id="last-transaction-date">
+                --
+            </span>
+
         </div>
+
     </section>
 
-    <section class="transactions-section">
-        <div class="section-title">
-            <h2>Recent Transactions</h2>
-            <span>Last 5 transactions</span>
+
+    <!-- Banking Actions -->
+
+    <section class="banking-actions">
+
+
+        <!-- Deposit -->
+
+        <div class="action-card">
+
+            <div class="action-icon deposit-icon">
+                💰
+            </div>
+
+            <div class="action-content">
+
+                <h2>Deposit Money</h2>
+
+                <p>
+                    Request the administrator to add money
+                    to your Valora account.
+                </p>
+
+            </div>
+
+            <button
+                class="deposit-main-btn"
+                onclick="goToDepositRequest()">
+
+                Request Deposit →
+
+            </button>
+
         </div>
 
-        <div class="transaction-list" id="transaction-list">
-            <p class="no-transactions">No transactions available</p>
+
+        <!-- Transfer -->
+
+        <div class="action-card">
+
+            <div class="action-icon transfer-icon">
+                💸
+            </div>
+
+            <div class="action-content">
+
+                <h2>Transfer Money</h2>
+
+                <p>
+                    Send money securely to another
+                    Valora account.
+                </p>
+
+            </div>
+
+            <button
+                class="transfer-main-btn"
+                onclick="goToTransfer()">
+
+                Transfer Money →
+
+            </button>
+
         </div>
+
+
+    </section>
+
+
+    <!-- Recent Transactions -->
+
+    <section class="transactions-section">
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>Recent Transactions</h2>
+
+                <p>
+                    Your latest account activity
+                </p>
+
+            </div>
+
+            <span>
+                Last 5 transactions
+            </span>
+
+        </div>
+
+
+        <div
+            class="transaction-list"
+            id="transaction-list">
+
+            <p class="no-transactions">
+                No transactions available
+            </p>
+
+        </div>
+
     </section>
 
 </main>
 
+
+<footer>
+
+    <p>
+        © 2026 Valora. Demo Banking Application.
+    </p>
+
+</footer>
+
+
 <script src="script.js"></script>
-```
 
 </body>
 </html>

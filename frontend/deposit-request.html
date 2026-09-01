@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valora | Deposit Request</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <nav class="navbar">
+        <div class="logo">🏦 Valora</div>
+        <button class="login-btn" onclick="logout()">Logout</button>
+    </nav>
+
+    <main class="transfer-page">
+
+        <section class="transfer-box">
+
+            <button class="back-btn" onclick="goBackToDashboard()">
+                ← Back to Dashboard
+            </button>
+
+            <div class="transfer-header">
+                <p class="welcome-text">DEPOSIT REQUEST</p>
+
+                <h1>Request a Deposit</h1>
+
+                <p>
+                    Submit a request to the Valora administrator
+                    to add money to your account.
+                </p>
+            </div>
+
+            <form id="deposit-request-form">
+
+                <div class="transfer-input">
+
+                    <label for="request-amount">
+                        Deposit Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="request-amount"
+                        placeholder="₹ Enter amount"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+                <div class="transfer-input">
+
+                    <label for="request-reason">
+                        Reason
+                    </label>
+
+                    <input
+                        type="text"
+                        id="request-reason"
+                        placeholder="Example: Cash deposit"
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="transfer-submit-btn"
+                >
+                    Submit Deposit Request
+                </button>
+
+                <p id="deposit-request-message"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

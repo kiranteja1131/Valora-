@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valora | Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-body">
+
+    <nav class="navbar">
+        <div class="logo">🏦 Valora</div>
+
+        <button class="login-btn" onclick="goHome()">
+            Home
+        </button>
+    </nav>
+
+    <main class="auth-container">
+
+        <section class="auth-box">
+
+            <div class="auth-header">
+                <div style="font-size:45px;">👨‍💼</div>
+
+                <h1>Admin Login</h1>
+
+                <p>Secure administrator access</p>
+            </div>
+
+            <form id="admin-login-form">
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        id="admin-email"
+                        placeholder="Admin email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="admin-password"
+                        placeholder="Admin password"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="primary-btn auth-submit">
+                    Admin Login
+                </button>
+
+                <p id="admin-login-message"
+                   style="margin-top:15px;text-align:center;">
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

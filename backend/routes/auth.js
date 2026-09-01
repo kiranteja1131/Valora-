@@ -90,5 +90,42 @@ const { email, password } = req.body;
 }
 
 });
+// Admin Login
+router.post("/admin-login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
+        // Dedicated admin credentials
+        if (
+            email !== "admin@valora.com" ||
+            password !== "Admin@123"
+        ) {
+            return res.status(401).json({
+                message: "Invalid admin email or password"
+            });
+        }
+
+        const token = jwt.sign(
+            {
+                role: "admin"
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "2h"
+            }
+        );
+
+        res.json({
+            message: "Admin login successful",
+            token
+        });
+
+    } catch (error) {
+        console.error("Admin login error:", error);
+
+        res.status(500).json({
+            message: "Admin login failed"
+        });
+    }
+});
 module.exports = router;

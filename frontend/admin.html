@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valora | Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <nav class="navbar">
+        <div class="logo">🏦 Valora | Admin</div>
+        <button class="login-btn" onclick="logout()">Logout</button>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-header">
+            <p class="welcome-text">ADMIN PANEL</p>
+            <h1>Deposit Requests</h1>
+            <p class="account-number">
+                Review and manage customer deposit requests
+            </p>
+        </section>
+
+        <section class="transactions-section">
+
+            <div class="section-title">
+                <h2>Pending Requests</h2>
+                <span id="request-count">Loading...</span>
+            </div>
+
+            <div id="admin-request-list">
+                <p class="no-transactions">
+                    Loading requests...
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
