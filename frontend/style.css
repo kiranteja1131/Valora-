@@ -266,7 +266,9 @@ footer {
     font-size: 14px;
 }
 
-.input-group input {
+.input-group input,
+.input-group select,
+.input-group textarea {
     width: 100%;
     padding: 13px;
     border: 1px solid #cbd5e1;
@@ -275,7 +277,9 @@ footer {
     outline: none;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
     border-color: #1e88e5;
 }
 
@@ -364,7 +368,9 @@ footer {
 }
 
 
-/* Account Summary */
+/* =========================
+   Account Summary
+   ========================= */
 
 .account-summary {
     display: grid;
@@ -421,7 +427,7 @@ footer {
 
 
 /* =========================
-   Dashboard Banking Actions
+   Banking Actions
    ========================= */
 
 .banking-actions {
@@ -509,6 +515,7 @@ footer {
     padding: 30px;
     border-radius: 14px;
     box-shadow: 0 5px 18px rgba(11, 61, 145, 0.1);
+    margin-bottom: 30px;
 }
 
 .section-title {
@@ -643,7 +650,7 @@ footer {
 
 
 /* =========================
-   Admin Requests
+   Deposit Requests
    ========================= */
 
 .admin-request {
@@ -706,8 +713,317 @@ footer {
 
 
 /* =========================
+   ADMIN DASHBOARD
+   ========================= */
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(11, 61, 145, 0.1);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #e3f2fd;
+    border-radius: 10px;
+
+    font-size: 23px;
+}
+
+.stat-card p {
+    color: #486581;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.stat-card h2 {
+    color: #0b3d91;
+    font-size: 25px;
+}
+
+
+/* =========================
+   Admin Users
+   ========================= */
+
+.admin-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-user:last-child {
+    border-bottom: none;
+}
+
+.user-info h3 {
+    color: #0b3d91;
+    margin-bottom: 7px;
+}
+
+.user-info p {
+    color: #486581;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.user-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.user-actions button {
+    border: none;
+    padding: 9px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.view-user-btn {
+    background-color: #0b3d91;
+}
+
+.edit-user-btn {
+    background-color: #1e88e5;
+}
+
+.suspend-user-btn {
+    background-color: #607d8b;
+}
+
+.activate-user-btn {
+    background-color: #2e7d32;
+}
+
+.delete-user-btn {
+    background-color: #c62828;
+}
+
+.reset-password-btn {
+    background-color: #546e7a;
+}
+
+.user-actions button:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   User Status
+   ========================= */
+
+.user-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.user-status.active {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.user-status.suspended {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+
+/* =========================
+   Admin Transactions
+   ========================= */
+
+.admin-transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-transaction:last-child {
+    border-bottom: none;
+}
+
+.admin-transaction-info h4 {
+    color: #0b3d91;
+    margin-bottom: 6px;
+}
+
+.admin-transaction-info p {
+    color: #486581;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.admin-transaction-amount {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.transaction-credit {
+    color: #2e7d32;
+}
+
+.transaction-debit {
+    color: #c62828;
+}
+
+.high-value {
+    display: inline-block;
+    background-color: #fff3e0;
+    color: #e65100;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 7px;
+}
+
+
+/* =========================
+   Admin Tools
+   ========================= */
+
+.admin-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 25px;
+}
+
+.admin-tools .primary-btn {
+    padding: 11px 18px;
+}
+
+
+/* =========================
+   Feedback
+   ========================= */
+
+.feedback-btn {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #0b3d91;
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(11, 61, 145, 0.25);
+
+    z-index: 1000;
+}
+
+.feedback-btn:hover {
+    transform: scale(1.05);
+}
+
+.feedback-box {
+    position: fixed;
+
+    right: 25px;
+    bottom: 90px;
+
+    width: 330px;
+
+    background-color: white;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+
+    z-index: 999;
+}
+
+.feedback-box h3 {
+    color: #0b3d91;
+    margin-bottom: 15px;
+}
+
+.feedback-box textarea {
+    width: 100%;
+    min-height: 110px;
+
+    resize: vertical;
+
+    padding: 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+}
+
+.feedback-box textarea:focus {
+    border-color: #1e88e5;
+}
+
+.feedback-box button {
+    margin-right: 7px;
+    margin-bottom: 7px;
+}
+
+#feedback-message {
+    color: #0b3d91;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+
+/* =========================
    Responsive
    ========================= */
+
+@media (max-width: 1000px) {
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
 @media (max-width: 800px) {
 
@@ -734,12 +1050,25 @@ footer {
         align-items: flex-start;
         gap: 15px;
     }
+
+    .admin-user {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-actions {
+        width: 100%;
+    }
 }
 
 
 @media (max-width: 650px) {
 
     .account-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-stats {
         grid-template-columns: 1fr;
     }
 
@@ -767,6 +1096,11 @@ footer {
         flex: 1;
     }
 
+    .admin-transaction {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .nav-actions {
         gap: 6px;
     }
@@ -779,6 +1113,12 @@ footer {
     .transfer-box,
     .auth-box {
         padding: 25px;
+    }
+
+    .feedback-box {
+        right: 15px;
+        left: 15px;
+        width: auto;
     }
 }
 
@@ -800,5 +1140,13 @@ footer {
     .feature-card {
         width: 100%;
         max-width: 320px;
+    }
+
+    .admin-tools {
+        flex-direction: column;
+    }
+
+    .admin-tools .primary-btn {
+        width: 100%;
     }
 }

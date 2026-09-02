@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Valora | Update Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🏦 Valora
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </nav>
+
+
+    <main class="transfer-page">
+
+        <section class="transfer-box">
+
+            <button
+                class="back-btn"
+                onclick="goBackToDashboard()">
+
+                ← Back to Dashboard
+
+            </button>
+
+
+            <div class="transfer-header">
+
+                <p class="welcome-text">
+                    PROFILE UPDATE
+                </p>
+
+                <h1>
+                    Request Profile Change
+                </h1>
+
+                <p>
+                    Submit the details you want to change.
+                    An administrator will review your request.
+                </p>
+
+            </div>
+
+
+            <form id="profile-update-form">
+
+
+                <div class="transfer-input">
+
+                    <label for="update-name">
+                        New Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="update-name"
+                        placeholder="Enter new name">
+
+                </div>
+
+
+                <div class="transfer-input">
+
+                    <label for="update-email">
+                        New Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="update-email"
+                        placeholder="Enter new email">
+
+                </div>
+
+
+                <div class="transfer-input">
+
+                    <label for="update-phone">
+                        New Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="update-phone"
+                        placeholder="Enter new phone number">
+
+                </div>
+
+
+                <div class="transfer-input">
+
+                    <label for="update-reason">
+                        Reason
+                    </label>
+
+                    <input
+                        type="text"
+                        id="update-reason"
+                        placeholder="Why do you want to update your details?">
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="transfer-submit-btn">
+
+                    Submit Update Request
+
+                </button>
+
+
+                <p id="profile-update-message"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
