@@ -2,7 +2,7 @@
 // VALORA - FINAL FRONTEND SCRIPT
 // =====================================================
 
-const API_URL = "http://localhost:5000";
+const API_URL = "";
 
 // =====================================================
 // NAVIGATION

@@ -26,12 +26,17 @@ stages {
             }
         }
     }
-    stage('Deploy') {
-        steps {
-            echo 'Deploying valora application...'
-            bat 'docker compose up -d'
-        }
+    stage('Deploy to Kubernetes') {
+    steps {
+        echo 'Deploying Valora application to Kubernetes...'
+
+        bat 'kubectl apply -f k8s/'
+
+        bat 'kubectl rollout status deployment/backend'
+        bat 'kubectl rollout status deployment/frontend'
+        bat 'kubectl rollout status deployment/mongodb'
     }
+}
 }
 post{
     success{

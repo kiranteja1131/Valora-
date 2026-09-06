@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+    metadata:
+      labels:
+        app: backend
+
+    spec:
+      containers:
+        - name: backend
+          image: kiran626/valora-backend:latest
+
+          ports:
+            - containerPort: 5000
+
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongodb:27017/valora"
