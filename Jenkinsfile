@@ -37,7 +37,6 @@ stages {
         bat 'kubectl rollout status deployment/mongodb'
     }
 }
-}
 post{
     success{
         echo 'pipeline successfully completed'
