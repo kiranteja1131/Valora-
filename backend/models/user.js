@@ -6,29 +6,30 @@ const mongoose = require("mongoose");
 
 const transactionSchema = new mongoose.Schema({
 
-    description: {
-        type: String,
-        required: true
-    },
 
-    type: {
-        type: String,
-        enum: ["credit", "debit"],
-        required: true
-    },
+description: {
+    type: String,
+    required: true
+},
 
-    amount: {
-        type: Number,
-        required: true
-    },
+type: {
+    type: String,
+    enum: ["credit", "debit"],
+    required: true
+},
 
-    date: {
-        type: Date,
-        default: Date.now
-    }
+amount: {
+    type: Number,
+    required: true
+},
+
+date: {
+    type: Date,
+    default: Date.now
+}
+
 
 });
-
 
 // =====================================================
 // USER SCHEMA
@@ -36,104 +37,114 @@ const transactionSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
 
-    // -------------------------------------------------
-    // Basic Information
-    // -------------------------------------------------
 
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
+// Basic Information
 
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true,
-        trim: true
-    },
+name: {
+    type: String,
+    required: true,
+    trim: true
+},
 
-    phone: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
-    },
+email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true
+},
 
-    password: {
-        type: String,
-        required: true
-    },
+phone: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+},
 
-
-    // -------------------------------------------------
-    // Banking Information
-    // -------------------------------------------------
-
-    accountNumber: {
-        type: String,
-        unique: true
-    },
-
-    balance: {
-        type: Number,
-        default: 0,
-        min: 0
-    },
+password: {
+    type: String,
+    required: true
+},
 
 
-    // -------------------------------------------------
-    // Account Status
-    // -------------------------------------------------
+// Email Verification
 
-    status: {
-        type: String,
+emailVerified: {
+    type: Boolean,
+    default: false
+},
 
-        enum: [
-            "active",
-            "suspended"
-        ],
+emailVerificationOtpHash: {
+    type: String,
+    select: false
+},
 
-        default: "active"
-    },
+emailVerificationOtpExpires: {
+    type: Date,
+    select: false
+},
 
+emailVerificationOtpAttempts: {
+    type: Number,
+    default: 0,
+    select: false
+},
 
-    // -------------------------------------------------
-    // User Role
-    // -------------------------------------------------
-
-    role: {
-        type: String,
-
-        enum: [
-            "customer",
-            "admin",
-            "teller"
-        ],
-
-        default: "customer"
-    },
+emailVerificationLastSentAt: {
+    type: Date,
+    select: false
+},
 
 
-    // -------------------------------------------------
-    // Transactions
-    // -------------------------------------------------
+// Banking Information
 
-    transactions: [
-        transactionSchema
-    ]
+accountNumber: {
+    type: String,
+    unique: true
+},
+
+balance: {
+    type: Number,
+    default: 0,
+    min: 0
+},
+
+
+// Account Status
+
+status: {
+    type: String,
+    enum: ["active", "suspended"],
+    default: "active"
+},
+
+
+// User Role
+
+role: {
+    type: String,
+    enum: ["customer", "admin", "teller"],
+    default: "customer"
+},
+
+
+// Transactions
+
+transactions: [
+    transactionSchema
+]
+
 
 }, {
 
-    timestamps: true
+
+timestamps: true
+
 
 });
-
 
 // =====================================================
 // EXPORT MODEL
 // =====================================================
 
-module.exports =
-    mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);

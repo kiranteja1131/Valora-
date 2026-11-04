@@ -138,7 +138,7 @@ if (adminLoginForm) {
 // =====================================================
 
 function showRegister() {
-
+    const otpForm = document.getElementById("otp-form");
     const loginForm =
         document.getElementById("login-form");
 
@@ -163,10 +163,13 @@ function showRegister() {
     if (formSubtitle)
         formSubtitle.textContent =
             "Join Valora and experience simple banking";
+    if (otpForm)
+    otpForm.style.display = "none";
 }
 
 
 function showLogin() {
+    const otpForm = document.getElementById("otp-form");
 
     const loginForm =
         document.getElementById("login-form");
@@ -192,6 +195,8 @@ function showLogin() {
     if (formSubtitle)
         formSubtitle.textContent =
             "Login to securely access your account";
+    if (otpForm)
+        otpForm.style.display =      "none";
 }
 
 
@@ -253,13 +258,19 @@ if (registerForm) {
                 return;
             }
 
-            alert(
-                "Account created successfully! Please login."
-            );
+            localStorage.setItem("pendingVerificationEmail", email);
 
-            registerForm.reset();
+registerForm.reset();
 
-            showLogin();
+registerForm.style.display = "none";
+
+document.getElementById("otp-form").style.display = "block";
+
+document.getElementById("form-title").textContent =
+    "Verify Your Email";
+
+document.getElementById("form-subtitle").textContent =
+    "Enter the OTP sent to your email address";
 
         } catch (error) {
 
@@ -274,8 +285,71 @@ if (registerForm) {
         }
     });
 }
+const otpForm = document.getElementById("otp-form");
 
+if (otpForm) {
+    otpForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
+        const email = localStorage.getItem("pendingVerificationEmail");
+        const otp = document.getElementById("verification-otp").value.trim();
+
+        try {
+            const response = await fetch(`${API_URL}/api/auth/verify-email`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, otp })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.message || "OTP verification failed");
+                return;
+            }
+
+            localStorage.removeItem("pendingVerificationEmail");
+            alert(data.message || "Email verified successfully. Please login.");
+
+            otpForm.reset();
+            otpForm.style.display = "none";
+            showLogin();
+
+        } catch (error) {
+            console.error("OTP verification error:", error);
+            alert("Unable to connect to the server.");
+        }
+    });
+}
+const resendOtpLink = document.getElementById("resend-otp");
+
+if (resendOtpLink) {
+    resendOtpLink.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        const email = localStorage.getItem("pendingVerificationEmail");
+
+        try {
+            const response = await fetch(`${API_URL}/api/auth/resend-otp`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await response.json();
+
+            alert(data.message || "OTP request completed.");
+
+        } catch (error) {
+            console.error("Resend OTP error:", error);
+            alert("Unable to connect to the server.");
+        }
+    });
+}
 // =====================================================
 // CUSTOMER LOGIN
 // =====================================================
@@ -2831,4 +2905,63 @@ if (
     loadAdminStats();
 
     loadAdminTransactions();
+}
+// =====================================================
+// COMPLETE TRANSACTION HISTORY
+// =====================================================
+
+async function loadAllTransactions() {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `${API_URL}/api/account/transactions`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        if (!response.ok) {
+            alert("Unable to load transactions.");
+            return;
+        }
+
+        const data = await response.json();
+
+        const container = document.getElementById("all-transactions");
+
+        if (data.transactions.length === 0) {
+            container.innerHTML = "<p>No transactions available.</p>";
+            return;
+        }
+
+        container.innerHTML = data.transactions.map(transaction => `
+            <div class="transaction-item">
+                <span>
+                    ${transaction.description}
+                    <br>
+                    <small>${new Date(transaction.date).toLocaleString()}</small>
+                </span>
+
+                <span>
+                    ${transaction.type === "credit" ? "+" : "-"}₹${Number(transaction.amount).toFixed(2)}
+                </span>
+            </div>
+        `).join("");
+
+    } catch (error) {
+        console.error("Transaction history error:", error);
+    }
+}
+
+if (window.location.pathname.includes("transactions.html")) {
+    loadAllTransactions();
 }

@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-
 stages {
     stage('Build') {
         steps {
@@ -36,6 +35,7 @@ stages {
         bat 'kubectl rollout status deployment/frontend'
         bat 'kubectl rollout status deployment/mongodb'
     }
+}
 }
 post{
     success{

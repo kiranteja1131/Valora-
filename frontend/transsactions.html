@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valora | Transactions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <nav class="navbar">
+        <div class="logo">🏦 Valora</div>
+
+        <div class="nav-actions">
+            <button class="login-btn" onclick="logout()">
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <section class="transactions-section">
+
+            <div class="section-title">
+                <div>
+                    <h2>Transaction History</h2>
+                    <p>Your complete account activity</p>
+                </div>
+
+                <button
+                    class="transfer-main-btn"
+                    onclick="window.location.href='dashboard.html'">
+                    ← Dashboard
+                </button>
+            </div>
+
+            <div id="all-transactions" class="transaction-list">
+                <p>Loading transactions...</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

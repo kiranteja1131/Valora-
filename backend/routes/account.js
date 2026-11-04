@@ -1610,7 +1610,42 @@ router.put(
     }
 );
 
+// =====================================================
+// CUSTOMER - COMPLETE TRANSACTION HISTORY
+// =====================================================
 
+router.get(
+    "/transactions",
+    authenticateToken,
+    requireCustomer,
+    async (req, res) => {
+        try {
+            const user = await User.findById(req.userId)
+                .select("transactions");
+
+            if (!user) {
+                return res.status(404).json({
+                    message: "User not found"
+                });
+            }
+
+            const transactions = [...user.transactions]
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            res.json({
+                totalTransactions: transactions.length,
+                transactions
+            });
+
+        } catch (error) {
+            console.error("Transaction history error:", error);
+
+            res.status(500).json({
+                message: "Failed to fetch transaction history"
+            });
+        }
+    }
+);
 // =====================================================
 // ADMIN - ALL TRANSACTIONS
 // =====================================================

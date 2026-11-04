@@ -167,6 +167,7 @@
             </button>
 
 
+
             <p class="switch-text">
 
                 Already have an account?
@@ -182,6 +183,29 @@
             </p>
 
         </form>
+        <form id="otp-form" style="display: none;">
+
+    <div class="input-group">
+        <label>Enter Email OTP</label>
+        <input
+            type="text"
+            id="verification-otp"
+            placeholder="Enter 6-digit OTP"
+            maxlength="6"
+            inputmode="numeric"
+            required>
+    </div>
+
+    <button type="submit" class="primary-btn auth-submit">
+        Verify Email
+    </button>
+
+    <p class="switch-text">
+        Didn't receive OTP?
+        <a href="#" id="resend-otp">Resend OTP</a>
+    </p>
+
+</form>
 
     </div>
 
