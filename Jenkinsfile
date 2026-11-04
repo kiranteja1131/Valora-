@@ -50,29 +50,7 @@ pipeline {
                     }
                 }
             }
-        }
-
-        stage('Open Valora') {
-            steps {
-                script {
-                    def ip = bat(
-                        script: 'minikube ip',
-                        returnStdout: true
-                    ).trim()
-
-                    def port = bat(
-                        script: 'kubectl get svc frontend -o jsonpath={.spec.ports[0].nodePort}',
-                        returnStdout: true
-                    ).trim()
-
-                    def appUrl = "http://${ip}:${port}"
-
-                    echo "Valora Application URL: ${appUrl}"
-
-                    bat "start \"\" \"${appUrl}\""
-                }
-            }
-        }
+        } 
     }
 
     post {
