@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: kiran626/valora-frontend:latest
+          image: kiran626/valora-frontend:${BUILD_NUMBER:-latest}
 
           ports:
             - containerPort: 80

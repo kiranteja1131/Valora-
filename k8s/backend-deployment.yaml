@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: kiran626/valora-backend:latest
+          image: kiran626/valora-backend:${BUILD_NUMBER:-latest}
 
           ports:
             - containerPort: 5000

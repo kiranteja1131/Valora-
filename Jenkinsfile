@@ -23,34 +23,41 @@ pipeline {
                     passwordVariable: 'DOCKER_PASSWORD'
                 )]) {
                     bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
-                    bat 'docker compose push'
+                    bat 'docker push kiran626/valora-backend:%BUILD_NUMBER%'
+bat 'docker push kiran626/valora-frontend:%BUILD_NUMBER%'
                 }
             }
         }
 
         stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    try {
-                        echo 'Deploying Valora...'
+    steps {
+        script {
+            try {
+                echo 'Deploying Valora build version...'
 
-                        bat 'kubectl apply -f k8s/'
+                bat 'kubectl apply -f k8s/'
 
-                        bat 'kubectl rollout status deployment/backend --timeout=120s'
-                        bat 'kubectl rollout status deployment/frontend --timeout=120s'
-                        bat 'kubectl rollout status deployment/mongodb --timeout=120s'
+                // Deploy versioned images
+                bat 'kubectl set image deployment/backend backend=kiran626/valora-backend:%BUILD_NUMBER%'
 
-                    } catch (err) {
-                        echo 'Deployment failed! Rolling back application...'
+                bat 'kubectl set image deployment/frontend frontend=kiran626/valora-frontend:%BUILD_NUMBER%'
 
-                        bat 'kubectl rollout undo deployment/backend'
-                        bat 'kubectl rollout undo deployment/frontend'
+                // Verify deployments
+                bat 'kubectl rollout status deployment/backend --timeout=120s'
+                bat 'kubectl rollout status deployment/frontend --timeout=120s'
+                bat 'kubectl rollout status deployment/mongodb --timeout=120s'
 
-                        throw err
-                    }
-                }
+            } catch (err) {
+                echo 'Deployment failed! Rolling back application...'
+
+                bat 'kubectl rollout undo deployment/backend'
+                bat 'kubectl rollout undo deployment/frontend'
+
+                throw err
             }
-        } 
+        }
+    }
+} 
     }
 
     post {
