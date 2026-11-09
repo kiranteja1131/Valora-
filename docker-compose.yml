@@ -24,7 +24,7 @@ services:
 
   frontend:
     build: ./frontend
-    image: image: kiran626/valora-frontend:${BUILD_NUMBER:-latest}
+    image: kiran626/valora-frontend:${BUILD_NUMBER:-latest}
     container_name: bf-container
     ports:
       - "8081:80"
